@@ -23,12 +23,11 @@ h1 {
     border: 2px solid #030016cc;
     box-shadow: 4px 4px 4px black;
     margin-top: 10px;
-    /* background-color: #fc667a57 */
+    background-color: #bfe0ff67;
 }
 
 .row {
     display: inline-block;
-    /* justify-content: center */
 }
 
 table {
@@ -37,7 +36,6 @@ table {
 
 table p {
     margin-left: 75px;
-    /* margin-top: 40px */
 }
 
 table p, h4 {

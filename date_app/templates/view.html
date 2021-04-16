@@ -41,27 +41,12 @@
                         {% if user not in date.liked_by.all %}
                             {% if user not in date.completed_by.all %}
                                 <tr>
-                                    <td><a href="../../complete/{{ date.id }}/">Complete</a></td>
+                                    <td><a href="../../favorite/{{ date.id }}/">Favorite</a></td>
                                 </tr>
                             {% endif %}
                         {% endif %}
                     </div>
                 </table>
-                <!-- <div class="row">
-                    <h3>Name:</h3> </p>{{ date.name }}</p>
-                </div>
-                <h3>Uploaded By:</h3> <p>{{ date.uploaded_by.firstname }}</p>
-                <p>Description: {{ date.description }}</p>
-                <p>Cost: {{ date.cost }}</p>
-                {% if user not in date.completed_by.all %}
-                    <a href="../../complete/{{ date.id }}/">Complete</a>
-                {% endif %}
-                {% if user not in date.liked_by.all %}
-                    {% if user not in date.completed_by.all %}
-                        <a href="../../favorite/{{ date.id }}/">Favorite</a>
-                    {% endif %}
-                {% endif %}
-            </div> -->
         </div>
 
     </body>
