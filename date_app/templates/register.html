@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>The Date Tracker</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+    </head>
+    <body>
+        
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="wrapper">
+            <h3>Welcome to the Date Tracker</h3>
+            <hr>
+            <div class="top">
+                <h1>Register</h1>
+                <p>Already registered? <a href="../login/">Login</a></p>
+            </div>
+                <form class="form" action="register/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><p>First Name</p></td>
+                            <td><input name="firstname" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Last Name</p></td>
+                            <td><input name="lastname" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Email</p></td>
+                            <td><input name="email" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Password</p></td>
+                            <td><input name="password" type="password"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Confirm pw</p></td>
+                            <td><input name="confirm_password" type="password"></td>
+                        </tr>
+                        <tr>
+                            <td><p><button class="button" type="Register">Register</button></p></td>
+                        </tr>
+                    </table>
+                </form>
+        </div>
+
+    </body>
+</html>

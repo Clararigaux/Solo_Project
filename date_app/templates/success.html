@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Date Tracker Dashboard</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    </head>
+    <body>
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="wrapper">
+            <div class="top">
+                <h2>Welcome, {{user.firstname}}!</h2>
+                <form action="../../logout/">
+                    <button class="button"> Log Out</button>
+                </form>
+                <h3><a class="button" href="../../add_date/">Add a date idea!</a></h3>
+            </div>
+
+            <div class="tables">
+                <table>
+                    <thead>
+                        <th>Date</th>
+                        <th>Uploaded By</th>
+                        <th>Actions</th>
+                    </thead>
+                    {% for date in dates %}
+                        {% if user not in date.liked_by.all %}
+                            {% if user not in date.completed_by.all %}
+                                <tr>
+                                    <td><a href="../../view/{{ date.id }}/">{{ date.name }}</a></td>
+                                    <td>{{ date.uploaded_by.firstname }}</td>
+                                    {% if user == date.uploaded_by %}
+                                        <td><a href="../../favorite/{{ date.id }}/">Favorite</a> | <a href="../../edit/{{ date.id }}/">Edit</a> | <a href="../../delete/{{ date.id }}/">Delete</a></td>
+                                    {% endif %}
+                                    {% if user != date.uploaded_by %}
+                                        <td><a href="../../favorite/{{ date.id }}/">Favorite</a></td> 
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </table>
+
+                <h3>Favorite Dates:</h3>
+                <table>
+                    <thead>
+                        <th>Date</th>
+                        <th>Uploaded By</th>
+                        <th>Actions</th>
+                    </thead>
+                    {% for date in dates %}
+                        {% if user in date.liked_by.all %}
+                            {% if user not in date.completed_by.all %}
+                                <tr>
+                                    <td><a href="../../view/{{ date.id }}/">{{ date.name }}</a></td>
+                                    <td>{{ date.description }}</td>
+                                        {% if user == date.uploaded_by %}
+                                            <td><a href="../../unfavorite/{{ date.id }}/">Unfavorite</a> | <a href="../../complete/{{ date.id }}/">Complete</a> | <a href="../../edit/{{ date.id }}/">Edit</a> | <a href="../../delete/{{ date.id }}/">Delete</a></td>
+                                        {% endif %}
+                                        {% if user != date.uploaded_by %}
+                                            <td><a href="../../unfavorite/{{ date.id }}/">Unfavorite</a> | <a href="../../complete/{{ date.id }}/">Complete</a></td>
+                                        {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </table>
+
+                <h3>Completed Dates:</h3>
+                <table name="table1">
+                    <thead>
+                        <th>Date</th>
+                        <th>Description</th>
+                        {% if user == date.uploaded_by %}
+                            <th>Actions</th>
+                        {% endif %}
+                    </thead>
+                    {% for date in dates %}
+                        {% if user in date.completed_by.all %}
+                                <tr>
+                                    <td><a href="../../view/{{ date.id }}/">{{ date.name }}</a></td>
+                                    <td>{{ date.description }}</td>
+                                        {% if user == date.uploaded_by %}
+                                            <td><a href="../../edit/{{ date.id }}/">Edit</a></td>
+                                        {% endif %}
+                                </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,45 @@
+* {
+    padding: 0px;
+    margin: 0px
+}
+
+.wrapper{
+    width: 600px;
+    padding: 10px;
+} 
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.322);
+}
+
+
+.view {
+    padding: 10px;
+    border: 2px solid #030016cc;
+    box-shadow: 4px 4px 4px black;
+    margin-top: 10px;
+    /* background-color: #fc667a57 */
+}
+
+.row {
+    display: inline-block;
+    /* justify-content: center */
+}
+
+table {
+    margin-left: 170px
+}
+
+table p {
+    margin-left: 75px;
+    /* margin-top: 40px */
+}
+
+table p, h4 {
+    color: #030016cc
+}

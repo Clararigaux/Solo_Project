@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>The Wishing App</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="top">
+                <h2>Add a date idea!</h2>
+                <form action="../../logout/">
+                    <h3><button class="button"> Log Out</button></h3>
+                </form>
+            </div>
+            <div>
+                <form class="form" action="../../create/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %}    
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <table>
+                        <div class="info">
+                            <tr>
+                                <td><p>Name:</p></td>
+                                <td><input name="name" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><p>Description:</p></td>
+                                <td><textarea name="description"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><p>Location:</p></td>
+                                <td><input name="location" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><p>Cost:</p></td>
+                                <td><input name="cost" type="text"></td>
+                            </tr>
+                        </div>
+                        <tr>
+                            <td>
+                                <button class="button" type="submit">Add</button>  
+                            </td>
+                            <td>
+                                <button class="button" type="button"><a href="../../success/">Cancel</a></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

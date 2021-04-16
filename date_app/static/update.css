@@ -1,0 +1,59 @@
+*{
+    padding: 0px;
+    margin: 0px
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.wrapper {
+    width: 500px;
+    padding: 20px
+}
+
+.form {
+    width: 75%;
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 20px
+}
+
+.form input, textarea {
+    border: 2px solid black;
+    width: 205px;
+    height: 20px;
+    padding: 5px;
+    margin-top: 10px
+}
+
+.form p {
+    margin-left: 20px;
+    margin-top: 10px
+}
+
+.button {
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    width: 75px;
+    background-color: white;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+form h3 button{
+    padding: 5px;
+    color: blue;;
+    text-decoration: underline
+}
+
+h6 {
+    text-emphasis: none;
+}

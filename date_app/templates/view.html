@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>One</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'view.css' %}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="top">
+                <h1>{{ date.name }}</h1> 
+                <p><a href="../../success/">Go Back</a></p>
+            </div>
+
+            <div class="view">
+                <table>
+                    <div class="info">
+                        <tr>
+                            <td><h4>Name:</h4></td>
+                            <td><p>{{ date.name }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Uploaded By:</h4></td>
+                            <td><p>{{ date.uploaded_by.firstname }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Location:</h4></td>
+                            <td><p>{{ date.location }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Cost:</h4></td>
+                            <td><p>{{ date.cost }}</p></td>
+                        </tr>
+                        {% if user not in date.completed_by.all %}
+                            <tr>
+                                <td><a href="../../complete/{{ date.id }}/">Complete</a></td>
+                            </tr>
+                        {% endif %}
+                        {% if user not in date.liked_by.all %}
+                            {% if user not in date.completed_by.all %}
+                                <tr>
+                                    <td><a href="../../complete/{{ date.id }}/">Complete</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </table>
+                <!-- <div class="row">
+                    <h3>Name:</h3> </p>{{ date.name }}</p>
+                </div>
+                <h3>Uploaded By:</h3> <p>{{ date.uploaded_by.firstname }}</p>
+                <p>Description: {{ date.description }}</p>
+                <p>Cost: {{ date.cost }}</p>
+                {% if user not in date.completed_by.all %}
+                    <a href="../../complete/{{ date.id }}/">Complete</a>
+                {% endif %}
+                {% if user not in date.liked_by.all %}
+                    {% if user not in date.completed_by.all %}
+                        <a href="../../favorite/{{ date.id }}/">Favorite</a>
+                    {% endif %}
+                {% endif %}
+            </div> -->
+        </div>
+
+    </body>
+</html>

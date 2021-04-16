@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+    <head>
+        <title>The Wishing App</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class=top>
+                <h3>Edit Your Job Posting</h3>
+                <h3><a href="../../success/">Back</a></h3>
+            </div>
+
+            <div>
+                <form class="form" action="../../update/{{ date.id }}/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %}    
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <table>
+                    <tr>
+                        <td><p>Name</p></td>
+                        <td><input name="name" type="text" value="{{ date.name }}"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Description</p></td>
+                        <td><textarea name="description">{{ date.description }}</textarea></td>
+                    </tr>
+                    <tr>
+                        <td><p>Location:</p></td>
+                        <td><input name="location" type="text" value="{{ date.location }}"></input></td>
+                    </tr>
+                    <tr>
+                        <td><p>Cost:</p></td>
+                        <td><input name="cost" type="text" value="{{ date.cost }}"></input></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="button" type="submit">Edit</button></td>
+                    </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
